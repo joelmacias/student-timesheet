@@ -10,7 +10,8 @@ ws = wb.active
 ws.title = "Student Timesheet"
 
 # header title
-ws.header_footer.center_header.text = "Department of Computer Science\nStudent Timesheet"
+ws.header_footer.center_header.text = "\n\n\nDepartment of Computer Science\nStudent Timesheet"
+ws.header_footer.center_header.font_size = 20
 
 
 # merge cells to format student information 
@@ -53,18 +54,21 @@ ws.merge_cells('D4:E4')
 ws.cell('D4').value = '{:^50}'.format('OUT')
 
 ws.merge_cells('F3:F4')
-ws.cell('F3').value = '{:^25}'.format('TOTAL') 
+ws.cell('F3').value = '{:^20}'.format('TOTAL') 
 
 # blank cells
 ws.merge_cells('A5:F5')
 
 # grand total, student signature, supervisor signature titles. 
 ws.merge_cells('A24:F24')
-ws.cell('A24').value = '{:^210}'.format('GRAND TOTAL')
+ws.cell('A24').value = '{:^215}'.format('GRAND TOTAL')
 ws.merge_cells('A25:F25')
 ws.cell('A25').value = ('Student Signature:')
 ws.merge_cells('A26:F26')
 ws.cell('A26').value = ('Supervisor Signature:')
+
+ws.print_options.horizontalCentered = True
+ws.print_options.verticalCentered = True
 
 # save workbook
 wb.save('timesheet.xlsx')
