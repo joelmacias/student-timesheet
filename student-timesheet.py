@@ -20,7 +20,7 @@ ws.merge_cells('D1:F1')
 ws.merge_cells('A2:C2')
 
 # prompt for user information
-print "Enter the pay period in the following format: mm/dd/yy"
+print "Enter the pay period in the following format: mm/dd/yy - mm/dd/yy"
 payPeriod = raw_input()
 
 print "Enter your name:"
@@ -39,7 +39,7 @@ ws.cell('D1').value = "Name: {0}".format(userName)
 ws.cell('A2').value = "UNLV ID#:{0}".format(unlvID)
 ws.cell('D2').value = "Job Title:{0}".format(jobTitle)
 
-# date and time titles
+# date, time, and hour titles
 ws.merge_cells('A3:A4')
 ws.cell('A3').value = "DATE"
 
@@ -53,8 +53,20 @@ ws.merge_cells('D4:E4')
 ws.cell('D4').value = '{:^50}'.format('OUT')
 
 ws.merge_cells('F3:F4')
-ws.cell('F3').value = '{:^10}'.format('TOTAL') 
+ws.cell('F3').value = '{:^25}'.format('TOTAL') 
+
+# blank cells
+ws.merge_cells('A5:F5')
+
+# grand total, student signature, supervisor signature titles. 
+ws.merge_cells('A24:F24')
+ws.cell('A24').value = '{:^210}'.format('GRAND TOTAL')
+ws.merge_cells('A25:F25')
+ws.cell('A25').value = ('Student Signature:')
+ws.merge_cells('A26:F26')
+ws.cell('A26').value = ('Supervisor Signature:')
+
 # save workbook
-wb.save('Student-Timesheet.xlsx')
+wb.save('timesheet.xlsx')
 
 
