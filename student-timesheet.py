@@ -1,0 +1,60 @@
+from openpyxl import Workbook
+
+# create an excel workbook
+wb = Workbook()
+
+# get worksheet created by default with Workbook()
+ws = wb.active
+
+# change default name of worksheet
+ws.title = "Student Timesheet"
+
+# header title
+ws.header_footer.center_header.text = "Department of Computer Science\nStudent Timesheet"
+
+
+# merge cells to format student information 
+ws.merge_cells('A1:C1')
+ws.merge_cells('D2:F2')
+ws.merge_cells('D1:F1')
+ws.merge_cells('A2:C2')
+
+# prompt for user information
+print "Enter the pay period in the following format: mm/dd/yy"
+payPeriod = raw_input()
+
+print "Enter your name:"
+userName = raw_input()
+
+print "Enter your UNLV ID:"
+unlvID = raw_input()
+
+print "Enter your job title:"
+jobTitle = raw_input()
+
+
+
+ws.cell('A1').value = "Pay Period: {0}".format(payPeriod)
+ws.cell('D1').value = "Name: {0}".format(userName)
+ws.cell('A2').value = "UNLV ID#:{0}".format(unlvID)
+ws.cell('D2').value = "Job Title:{0}".format(jobTitle)
+
+# date and time titles
+ws.merge_cells('A3:A4')
+ws.cell('A3').value = "DATE"
+
+ws.merge_cells('B3:E3')
+ws.cell('B3').value = '{:^100}'.format('TIME')
+
+ws.merge_cells('B4:C4')
+ws.cell('B4').value = '{:^50}'.format('IN')
+
+ws.merge_cells('D4:E4')
+ws.cell('D4').value = '{:^50}'.format('OUT')
+
+ws.merge_cells('F3:F4')
+ws.cell('F3').value = '{:^10}'.format('TOTAL') 
+# save workbook
+wb.save('Student-Timesheet.xlsx')
+
+
