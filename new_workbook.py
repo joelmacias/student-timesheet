@@ -1,11 +1,7 @@
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
-# prompt for new sheet or load sheet
-print "To create a new workbook enter 'new'\nTo open an existing timesheet enter 'open'"
-timesheetOption = raw_input()
-fileExtension = ".xlsx"
-if timesheetOption == "new":
+def create_new_workbook():
 
 	print "Enter a filename for your new workbook"
 	fileName = raw_input()
@@ -77,9 +73,12 @@ if timesheetOption == "new":
 	ws.print_options.verticalCentered = True
 
 	# save workbook
+	fileExtension = ".xlsx"
 	fileName += fileExtension
 	print (fileName)
 	wb.save(fileName)
 	
 	print "Workbook {0} was created".format(fileName)
+
+	return wb 
 
