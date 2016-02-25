@@ -77,23 +77,9 @@ if timesheetOption == "new":
 	ws.print_options.verticalCentered = True
 
 	# save workbook
-	
 	fileName += fileExtension
 	print (fileName)
 	wb.save(fileName)
- 
-if timesheetOption == "open":
-	# get name of file to be opened 
-	print "Enter the name of the file you want to open"
-	fileToOpen = raw_input() 
-	fileToOpen += fileExtension
 	
-	# load workbook from given filename
-	wb = load_workbook(filename = fileToOpen)
+	print "Workbook {0} was created".format(fileName)
 
-	# grab current sheet
-	ws = wb.active
-	ws['A7'] = "02-24-16"
-	testRead =  ws['A6']
-	print testRead.value
-	wb.save(fileToOpen)
