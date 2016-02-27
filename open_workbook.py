@@ -8,7 +8,8 @@ def open_existing_workbook():
 	print "Enter the name of the file you want to open"
 	fileToOpen = raw_input() 
 	fileToOpen += fileExtension
-	
+
+	print "File '{0}' has been opened".format(fileToOpen) 	
 	# load workbook from given filename
 	return load_workbook(filename = fileToOpen)
 

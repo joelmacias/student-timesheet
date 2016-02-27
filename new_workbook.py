@@ -82,3 +82,15 @@ def create_new_workbook():
 
 	return wb 
 
+# find next empty cell to insert input
+def find_empty_cell(ws):
+
+	# First cell that may be written to is A6, the 5th element.
+	for i, x in enumerate((ws.columns)[0]):
+		if i >= 5:
+			if x.value == None:
+				return i
+
+	# return -1 to indeicate sheet is full 
+	return -1
+	

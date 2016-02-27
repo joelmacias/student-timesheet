@@ -3,13 +3,15 @@ from datetime import datetime
 Class TimeWorked:
 	
 	# initializer
-	def __init__(self, date, inTime, outTime, totalTime):
+	def __init__(self, date, inTime, outTime, totalTime, fileName, currentCell):
 
 		self.name = name
 		self.date = date
 		self.inTime = inTime
 		self.outTime = outTime
 		self.totalTime = 0.0 
+		self.fileName = fileName 
+		self.currentCell = currentCell
 
 	# calculate hours worked
 	def calculate_hours_worked(self):
