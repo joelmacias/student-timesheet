@@ -3,10 +3,8 @@ from datetime import datetime
 Class TimeWorked:
 	
 	# initializer
-	def __init__(self, date, inTime, outTime, totalTime, fileName, currentCell):
+	def __init__(inTime, outTime, totalTime, fileName, currentCell):
 
-		self.name = name
-		self.date = date
 		self.inTime = inTime
 		self.outTime = outTime
 		self.totalTime = 0.0 
@@ -22,9 +20,4 @@ Class TimeWorked:
 		s2 = self.outTime
 		tDelta = datetime.strptime(s2, FMT) - datetime.strptime(s1, FMT)
 	
-	# return class variables
-	def return_in_time(self): return self.inTime
-	def return_out_time(self): return self.outTime
-	def return_total_time(self): return  self.totalTime
-
-
+	
