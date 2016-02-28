@@ -1,71 +1,80 @@
 from openpyxl import Workbook
 from openpyxl import load_workbook
 from datetime import datetime
+import sys
 import new_workbook
 import open_workbook
-
+from time_sheet_class import TimeSheet
 # prompt for new sheet or load sheet
-print "Usage - Enter 'n' to create a new excel workbook, enter 'o' to open an existing excel workbook"
+print "Open existing workbook type"
 userWorkbookSelection = raw_input()
 
 
-# user has selected to create a new workbook
+''' User has selected to create new workbook. Prompt for name of file to be created.
+	Instance of class TimesSheet is created with arguments fileName, and a workbook 
+	returned by the function create_new_workbook.
+	
+	create_new_workbook will format the sheet to mimic the standard student worker timesheet 
+'''
 if userWorkbookSelection == "n":
 	
-	# wb is the current workbook
-	wb = new_workbook.create_new_workbook() 
-	# get worksheet
-	ws = wb.active
+	# get file name
+	print "Enter a filename for new workbook: "
+	fileName = raw_input()
+	
+	# instance of class TimeSheet
+	currentTimeSheet = TimeSheet(fileName, new_workbook.create_new_workbook(fileName))
 
-	 
+
+
 if userWorkbookSelection == "o": 
 
+	print "Enter the name of the file to be opened: "
+	fileName = raw_input()
 	# wb is the current workbook
-	wb = open_workbook.open_existing_workbook()
-	# get worksheet	
-	ws = wb.active
+	currentTimeSheet = TimeSheet(fileName,open_workbook.open_existing_workbook(fileName))
 
-'''
-	check = 'A7'	
-	emptyCheck = ws[''].value
-	if emptyCheck == None: 
-		print 'empty'
-'''
 
 # find row where user input will start
-indexOfCellToBeWritten = new_workbook.find_empty_cell(ws)
+currentTimeSheet.find_empty_cell()
 
 # 22 last cell that can be written to A24
-if indexOfCellToBeWritten == -1:
-	print "Sheet is full" 
+if currentTimeSheet.cellIndex == -1:
+	sys.exit("Error: Timesheet is full. Create new Timesheet")
+else: 
+	print "Add a shift entry? (y/n): "
+	addNewEntry = raw_input()
 
-if indexOfCellToBeWritten  != -1:
-	print "Add an entry? (y/n): "
-	addNewEntery = raw_input() 
-	while (addNewEntery == 'y'):
-		print "Enter date <dd/mm/yy> : "
-		currentDate = raw_input()
-		print "Enter in time - <HH:MM> : "
-		inTime = raw_input()
-		print "Enter out time - <HH:MM> : "
-		outTime = raw_input() 
-		FMT = '%H:%M'
-		timeDelta = datetime.strptime(outTime, FMT) - datetime.strptime(inTime, FMT) 
-		print "The following will be input:\n Date: {0}\nIn time: {1}\nOut time: {2}\nTotal time worked: {3}".format(currentDate, inTime, outTime, timeDelta)
-		print "Edit input? (y/n): "
-		editInput = raw_input()
-		if editInput == 'n':
-			x = 7
-		# go to insert function
-		print "Add another entry? (y/n): "
-		addNewEntry = raw_input()
+	if addNewEntry == 'n':	
+		currentTimeSheet.calculate_grand_total()
+		currentTimeSheet.save_time_sheet()
+		sys.exit("Saving timesheet, and exiting program.")
 
-'''
-#print (ws.columns)[0]
-for i in (ws.columns)[0]:
-	if i.value == None:
-		print i
-		#print " {0}".format(x)
-		#x = x + 1; 
-'''
+
+	while (addNewEntry == 'y'):
+		shiftInfoList = open_workbook.get_shift_info()
+		print "The following will be input:\n Date: {0}\nIn time: {1}\nOut time: {2}\nTotal time worked: {3}".format(shiftInfoList[0], shiftInfoList[2], shiftInfoList[4], shiftInfoList[5])
+		
+		print "Discard shift entry, and re-enter shift entry? (y/n): "
+		discardInput = raw_input()
+		
+		if discardInput == 'n':
+			currentTimeSheet.insert_entry(shiftInfoList)
+			currentTimeSheet.find_empty_cell()
+			print "Shift entry has been added." 
+		
+		if discardInput == 'n' and currentTimeSheet.cellIndex != -1:
+			print "Add another entry? (y/n): "
+			addNewEntry = raw_input()
+
+		if currentTimeSheet.cellIndex == -1 and addNewEntry == 'y': 
+			currentTimeSheet.calculate_grand_total()
+			currentTimeSheet.save_time_sheet()
+			sys.exit("The current timesheet is full, saving timesheet, and exiting program.") 
+				
+		if discardInput == 'n' and addNewEntry == 'n':
+			currentTimeSheet.calculate_grand_total()
+			currentTimeSheet.save_time_sheet()
+			sys.exit("Saving timesheet, and exiting program.")
+
 

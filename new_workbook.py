@@ -1,11 +1,12 @@
+#new_workbook
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
-def create_new_workbook():
+def create_new_workbook(fileName):
 
-	print "Enter a filename for your new workbook"
-	fileName = raw_input()
-	# create an excel workbook
+#	print "Enter a filename for your new workbook"
+#	fileName = raw_input()
+#	# create an excel workbook
 	wb = Workbook()
 
 	# get worksheet created by default with Workbook()
@@ -62,8 +63,8 @@ def create_new_workbook():
 	ws.merge_cells('A5:F5')
 
 	# grand total, student signature, supervisor signature titles. 
-	ws.merge_cells('A24:F24')
-	ws.cell('A24').value = '{:^215}'.format('GRAND TOTAL')
+	ws.merge_cells('A24:E24')
+	ws.cell('A24').value = '{:^200}'.format('GRAND TOTAL')
 	ws.merge_cells('A25:F25')
 	ws.cell('A25').value = ('Student Signature:')
 	ws.merge_cells('A26:F26')
@@ -82,15 +83,6 @@ def create_new_workbook():
 
 	return wb 
 
-# find next empty cell to insert input
-def find_empty_cell(ws):
 
-	# First cell that may be written to is A6, the 5th element.
-	for i, x in enumerate((ws.columns)[0]):
-		if i >= 5:
-			if x.value == None:
-				return i
 
-	# return -1 to indeicate sheet is full 
-	return -1
 	
