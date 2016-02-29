@@ -8,7 +8,7 @@ The format of the timesheet used is the department timesheet I am required to tu
 
 The tool accepts two arguments:
 
-	First argument  - new or open - new will create a new timesheet, and format it according to the department timesheet.
+	First argument  - <new|open> - new will create a new timesheet, and format it according to the department timesheet.
 
 	Second argument - <filename>  - a new timesheet will be created with the provided name if the first argument was new, or an existing timesheet will be opened if the first argument was open 
 
