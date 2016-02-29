@@ -23,21 +23,21 @@ def get_shift_info():
 	shiftInfoList = []
 
 	# Prompt for shif date, appened date to list, add in time label to list.
-	print "\nEnter date <dd/mm/yy> : "
+	print "\nEnter date <dd/mm/yy>: "
 	currentDate = raw_input()
 	shiftInfoList.append(currentDate)
 	shiftInfoList.append("IN TIME:")
 	
 	# Prompt user for in time, appened in time to list, add out time label.
 	print "\nUse 24-hour time format" 
-	print "Enter in time - <HH:MM> : "
+	print "Enter in time - <HH:MM>: "
 	inTime = raw_input()
 	shiftInfoList.append(inTime)
 	shiftInfoList.append("OUT TIME:")
 
 	# Prompt user for out time, append out time to list.
 	print "\nUse 24-hour time format"
-	print "Enter out time - <HH:MM> : "
+	print "Enter out time - <HH:MM>: "
 	outTime = raw_input()
 	shiftInfoList.append(outTime)
 	
