@@ -3,30 +3,29 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 
 def create_new_workbook(fileName):
+	""" Returns a workbook instance. Workbook returned will be formatted to mimc the standard timesheet. """
 
-#	print "Enter a filename for your new workbook"
-#	fileName = raw_input()
-#	# create an excel workbook
+	# Create a workbook. 
 	wb = Workbook()
 
-	# get worksheet created by default with Workbook()
+	# Get worksheet created by default with Workbook().
 	ws = wb.active
 
-	# change default name of worksheet
+	# Change default name of worksheet.
 	ws.title = "Student Timesheet"
 
-	# header title
+	# Header title.
 	ws.header_footer.center_header.text = "\n\n\nDepartment of Computer Science\nStudent Timesheet"
 	ws.header_footer.center_header.font_size = 20
 
-	# merge cells to format student information 
+	# Merge cells to format student information. 
 	ws.merge_cells('A1:C1')
 	ws.merge_cells('D2:F2')
 	ws.merge_cells('D1:F1')
 	ws.merge_cells('A2:C2')
 
-	# prompt for user information
-	print "Enter the pay period in the following format: mm/dd/yy - mm/dd/yy"
+	# Prompt for user information.
+	print "Enter the pay period <mm/dd/yy - mm/dd/yy>"
 	payPeriod = raw_input()
 
 	print "Enter your name:"
@@ -43,7 +42,7 @@ def create_new_workbook(fileName):
 	ws.cell('A2').value = "UNLV ID#:{0}".format(unlvID)
 	ws.cell('D2').value = "Job Title:{0}".format(jobTitle)
 
-	# date, time, and hour titles
+	# Date, time, and hour titles.
 	ws.merge_cells('A3:A4')
 	ws.cell('A3').value = "DATE"
 
@@ -59,10 +58,10 @@ def create_new_workbook(fileName):
 	ws.merge_cells('F3:F4')
 	ws.cell('F3').value = '{:^20}'.format('TOTAL') 
 
-	# blank cells
+	# Blank cells.
 	ws.merge_cells('A5:F5')
 
-	# grand total, student signature, supervisor signature titles. 
+	# Grand total, student signature, supervisor signature titles. 
 	ws.merge_cells('A24:E24')
 	ws.cell('A24').value = '{:^200}'.format('GRAND TOTAL')
 	ws.merge_cells('A25:F25')
@@ -73,16 +72,11 @@ def create_new_workbook(fileName):
 	ws.print_options.horizontalCentered = True
 	ws.print_options.verticalCentered = True
 
-	# save workbook
+	# Save workbook.
 	fileExtension = ".xlsx"
-	fileName += fileExtension
-	print (fileName)
+	fileName += fileExtension	
 	wb.save(fileName)
 	
-	print "Workbook {0} was created".format(fileName)
+	print "\n\nTimesheet '{0}' was created".format(fileName)
 
-	return wb 
-
-
-
-	
+	return wb	
