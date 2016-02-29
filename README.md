@@ -8,7 +8,7 @@ The format of the timesheet created will be the standard timesheet provided by m
 
 I wrote this tool specifically for the timesheet provided by my department, so it wont work properly with any other timesheet. :)
 
-The tool accepts two arguments:
+The tool accepts two command line arguments:
 
 	First argument  - <new|open> -'new' will create a new timesheet, and format it according to the department timesheet. 'open' will open an existing timesheet.
 
