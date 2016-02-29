@@ -10,7 +10,7 @@ I wrote this tool specifically for the timesheet provided by my department, so i
 
 The tool accepts two arguments:
 
-	First argument  - <new|open> - new will create a new timesheet, and format it according to the department timesheet.
+	First argument  - <new|open> - new will create a new timesheet, and format it according to the department timesheet. Open will open an existing timesheet.
 
 	Second argument - <filename>  - a new timesheet will be created with the provided name if the first argument was new, or an existing timesheet will be opened if the first argument was open 
 
