@@ -1,5 +1,5 @@
 #Student Worker Timesheet
-Command line tool to generate my student worker timsheet. The main goal of this CLT was to start learning Python, and to deter me from filling out all my paper timsheets the morning they are due. My intention is to fire up the tool at the start, and end of my shift, logging times accordingly.
+Command line tool (CLT) to generate my student worker timsheet. The main goal of this CLT was to start learning Python, and to deter me from filling out all my paper timsheets the morning they are due. My intention is to fire up the tool at the start, and end of my shift, logging times accordingly.
 
 I'm certainly aware that I could have simply created this timesheet using Excel, but that would have been no fun.
 #Usage
