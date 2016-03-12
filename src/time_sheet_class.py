@@ -59,9 +59,20 @@ class TimeSheet:
 		while(self.totalMinWorked >= 60):
 				self.totalMinWorked =  self.totalMinWorked - 60
 				self.totalHoursWorked += 1
-
-		grandTotal = datetime.time(self.totalHoursWorked, self.totalMinWorked, 00)
- 		(self.ws).cell('F24').value = grandTotal
+		
+		#converting hours worked to a string 
+		hoursWorkedString = str(self.totalHoursWorked)
+		if self.totalHoursWorked < 10: 
+			hoursWorkedString = '0' + hoursWorkedString
+		
+		minWorkedString = str(self.totalMinWorked)
+		if self.totalMinWorked < 10: 
+			minWorkedString = '0' + minWorkedString
+	
+		newGrandTotal = hoursWorkedString + ':' + minWorkedString + ':00'
+	
+		#grandTotal = datetime.time(self.totalHoursWorked, self.totalMinWorked, 00)
+ 		(self.ws).cell('F24').value = newGrandTotal
 
 
 		
