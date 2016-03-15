@@ -1,0 +1,11 @@
+# OS generate files #
+#####################
+.DS_Store
+
+# Excel files #
+###############
+*.xlsx
+
+# Compiled python files #
+#########################
+*.pyc
