@@ -15,6 +15,33 @@ def open_existing_workbook(fileName):
 	# Load workbook from given filename.
 	return load_workbook(filename = fileName)
 
+
+def standard_time_to_military_time(rawTimeInput):
+	# tuple with in time and am/pm [0] = intime, [1] = ' ', [2] = am/pm
+	inTimeTuple = rawTimeInput.partition(' ') 
+	
+	# inTimeTuple[0] = hour, inTimeTuple[1] = ':', inTimeTuple[2] = min	
+	hourAndMinTuple = inTimeTuple[0].partition(':')
+	
+
+	if inTimeTuple[2] == 'pm':
+		# if less than 12 convert to military time by adding 12 
+		if int(hourAndMinTuple[0]) < 12:
+			inTimeMilitaryHour = int(hourAndMinTuple[0]) + 12 
+		else:
+			inTimeMilitaryHour = 12
+	
+		inTimeFormatted = str(inTimeMilitaryHour) + ':' + hourAndMinTuple[2]
+
+	if inTimeTuple[2] == 'am':
+		# if current hour is 12am change it to military time 12am which is 00	
+		if int(hourAndMinTuple[0]) == 12:
+			inTimeFormatted = '00' + ':' + hourAndMinTuple[2]		
+		else:
+			inTimeFormatted = hourAndMinTuple[0] + ':' + hourAndMinTuple[2]
+
+	return inTimeFormatted
+
 def get_shift_info():
 	""" Returns a list with the shift data entered by the user, and labels to add to timesheet.
 		The list will have the following data: shift date, in time label, in time, out time label, out time, and total hours worked for the shfit """
@@ -29,17 +56,21 @@ def get_shift_info():
 	shiftInfoList.append("IN TIME:")
 	
 	# Prompt user for in time, appened in time to list, add out time label.
-	print "\nUse 24-hour time format" 
-	print "Enter in time - <HH:MM>: "
-	inTime = raw_input()
-	shiftInfoList.append(inTime)
+	print "Enter in time - <HH:MM am/pm>: "
+	
+	inTimeRawInput = raw_input()
+	shiftInfoList.append(inTimeRawInput)
 	shiftInfoList.append("OUT TIME:")
 
-	# Prompt user for out time, append out time to list.
-	print "\nUse 24-hour time format"
-	print "Enter out time - <HH:MM>: "
-	outTime = raw_input()
-	shiftInfoList.append(outTime)
+	inTime = standard_time_to_military_time(inTimeRawInput)
+
+
+	# Prompt user for out time, append out time to list.	
+	print "Enter out time - <HH:MM am/pm>: "
+	outTimeRawInput = raw_input()
+	shiftInfoList.append(outTimeRawInput)
+
+	outTime = standard_time_to_military_time(outTimeRawInput) 
 	
 	# Calculate total time worked in shift.  
 	FMT = '%H:%M'
