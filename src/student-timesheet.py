@@ -75,7 +75,7 @@ def main(userWorkbookSelection, fileName):
 					sys.exit("The current timesheet is full, saving timesheet, and exiting program.") 
 				
 				# User is done entering shift data, calcualte grand total of hours worked, save timesheet,exit program
-				if discardInput == 'd' or discardInput == 's' and addNewEntry == 'n':
+				if (discardInput == 'd' or discardInput == 's') and addNewEntry == 'n':
 					currentTimeSheet.calculate_grand_total()
 					currentTimeSheet.save_time_sheet()
 					sys.exit("Saving timesheet, and exiting program.")
