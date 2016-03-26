@@ -1,9 +1,26 @@
 #new_workbook
+import os 
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
 def create_new_workbook(fileName):
 	""" Returns a workbook instance. Workbook returned will be formatted to mimc the standard timesheet. """
+
+	# Check if file exists 
+	pwdPath = os.getcwd()
+	pwdPath = pwdPath + "/" + fileName + ".xlsx"
+	doesFileExist = os.path.isfile(pwdPath)
+	while doesFileExist:
+		print "The file {0} already exists.\nOverwrite file? (y/n): ".format(fileName)
+		overWriteFile = raw_input() 
+		if overWriteFile == "y":
+			doesFileExist = False
+		else:
+			print "Enter the new file's name: "
+			fileName = raw_input()
+			pwdPath = os.getcwd()
+			pwdPath = pwdPath + "/" + fileName + ".xlsx"
+			doesFileExist = os.path.isfile(pwdPath)
 
 	# Create a workbook. 
 	wb = Workbook()
