@@ -3,18 +3,25 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 from datetime import datetime
 from datetime import timedelta
+import os
+import sys
 
-	
 def open_existing_workbook(fileName):
 	""" Returns a workbook from the filename specified by the user """
-
+	raw = fileName;
 	fileExtension = ".xlsx"
 	fileName += fileExtension
 
-	print "File '{0}' has been opened".format(fileName) 	
-	# Load workbook from given filename.
-	return load_workbook(filename = fileName)
-
+	# current path
+	pwdPath = os.getcwd()
+	pwdPath = pwdPath + "/" + fileName
+	if(os.path.isfile(pwdPath)):
+		print "File '{0}' has been opened".format(fileName) 	
+		# Load workbook from given filename.
+		return load_workbook(filename = fileName)
+	else:
+		print "File '{0}' does not exist.\nExiting program.".format(raw) 
+		sys.exit() 
 
 def standard_time_to_military_time(rawTimeInput):
 	# tuple with in time and am/pm [0] = intime, [1] = ' ', [2] = am/pm
