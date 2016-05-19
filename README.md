@@ -12,7 +12,8 @@ To run the tool:
 
 	python student-timesheet.py <new|open> <filename>
 
-Arguments:	
+Arguments:
+	
 	First argument: <new|open>  
 'new' will create a new timesheet, and format it according to the department timesheet.<br />
 'open' will open an existing timesheet.
