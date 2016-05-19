@@ -9,6 +9,7 @@ The format of the timesheet created will be the standard timesheet provided by m
 I wrote this tool specifically for the timesheet provided by my department, so it wont work properly with any other timesheet. :)
 
 To run the tool:
+
 	python student-timesheet.py <new|open> <filename>
 	
 First argument  - <new|open>  
