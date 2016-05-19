@@ -33,8 +33,8 @@ def main(userWorkbookSelection, fileName):
 		if currentTimeSheet.cellIndex == -1:
 			sys.exit("Error: Timesheet is full. Create new Timesheet")
 		else: 
-			print "Add a shift entry? (y/n): "
-			addNewEntry = raw_input()
+			print ("Add a shift entry? (y/n): ")
+			addNewEntry = input()
 
 			# Calculate total, save timesheet, exit program.
 			if addNewEntry == 'n':	
@@ -47,10 +47,10 @@ def main(userWorkbookSelection, fileName):
 				
 				# shiftInfoList will store the shift entry: date, int time label, in time, out time labelout time, and total hours worked. 
 				shiftInfoList = open_workbook.get_shift_info()
-				print "\nYou entered the following shift:\nDate: {0}\nIn time: {1}\nOut time: {2}\nTotal time worked: {3}".format(shiftInfoList[0], shiftInfoList[2], shiftInfoList[4], shiftInfoList[5])
+				print ("\nYou entered the following shift:\nDate: {0}\nIn time: {1}\nOut time: {2}\nTotal time worked: {3}".format(shiftInfoList[0], shiftInfoList[2], shiftInfoList[4], shiftInfoList[5]))
 				
-				print "\nSave shift entry, or discard shift entry? (s/d): "
-				discardInput = raw_input()
+				print ("\nSave shift entry, or discard shift entry? (s/d): ")
+				discardInput = input()
 				
 				# Shift entry will be inserted into timesheet, next cell to be written to will be located
 				# and timesheet will be saved.
@@ -58,14 +58,14 @@ def main(userWorkbookSelection, fileName):
 					currentTimeSheet.insert_entry(shiftInfoList)
 					currentTimeSheet.find_empty_cell()
 					currentTimeSheet.save_time_sheet()
-					print "Shift entry has been added." 
+					print ("Shift entry has been added.") 
 				
 				# Prompt user for another entry.
 				if (discardInput == 'd' or discardInput == 's') and currentTimeSheet.cellIndex != -1:
 					if discardInput =='d':
-						print "Entry has been discared"
-					print "\nAdd another entry? (y/n): "
-					addNewEntry = raw_input()
+						print ("Entry has been discared")
+					print ("\nAdd another entry? (y/n): ")
+					addNewEntry = input()
 
 				# If timesheet is full and user wants to add another shift, calculate grand total for hours worked
 				# save timesheet, and exit program.

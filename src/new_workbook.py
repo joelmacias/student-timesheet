@@ -11,13 +11,13 @@ def create_new_workbook(fileName):
 	pwdPath = pwdPath + "/" + fileName + ".xlsx"
 	doesFileExist = os.path.isfile(pwdPath)
 	while doesFileExist:
-		print "The file {0} already exists.\nOverwrite file? (y/n): ".format(fileName)
-		overWriteFile = raw_input() 
+		print ("The file {0} already exists.\nOverwrite file? (y/n): ".format(fileName))
+		overWriteFile = input() 
 		if overWriteFile == "y":
 			doesFileExist = False
 		else:
-			print "Enter the new file's name: "
-			fileName = raw_input()
+			print ("Enter the new file's name: ")
+			fileName = input()
 			pwdPath = os.getcwd()
 			pwdPath = pwdPath + "/" + fileName + ".xlsx"
 			doesFileExist = os.path.isfile(pwdPath)
@@ -42,17 +42,17 @@ def create_new_workbook(fileName):
 	ws.merge_cells('A2:C2')
 
 	# Prompt for user information.
-	print "Enter the pay period <mm/dd/yy - mm/dd/yy>"
-	payPeriod = raw_input()
+	print ("Enter the pay period <mm/dd/yy - mm/dd/yy>")
+	payPeriod = input()
 
-	print "Enter your name:"
-	userName = raw_input()
+	print ("Enter your name:")
+	userName = input()
 
-	print "Enter your UNLV ID:"
-	unlvID = raw_input()
+	print ("Enter your UNLV ID:")
+	unlvID = input()
 
-	print "Enter your job title:"
-	jobTitle = raw_input()
+	print ("Enter your job title:")
+	jobTitle = input()
 
 	ws.cell('A1').value = "Pay Period: {0}".format(payPeriod)
 	ws.cell('D1').value = "Name: {0}".format(userName)
@@ -94,6 +94,6 @@ def create_new_workbook(fileName):
 	fileName += fileExtension	
 	wb.save(fileName)
 	
-	print "\n\nTimesheet '{0}' was created".format(fileName)
+	print ("\n\nTimesheet '{0}' was created".format(fileName))
 
 	return wb	

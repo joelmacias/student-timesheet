@@ -16,11 +16,11 @@ def open_existing_workbook(fileName):
 	pwdPath = os.getcwd()
 	pwdPath = pwdPath + "/" + fileName
 	if(os.path.isfile(pwdPath)):
-		print "File '{0}' has been opened".format(fileName) 	
+		print ("File '{0}' has been opened".format(fileName)) 	
 		# Load workbook from given filename.
 		return load_workbook(filename = fileName)
 	else:
-		print "File '{0}' does not exist.\nExiting program.".format(raw) 
+		print ("File '{0}' does not exist.\nExiting program.".format(raw)) 
 		sys.exit() 
 
 def standard_time_to_military_time(rawTimeInput):
@@ -57,15 +57,15 @@ def get_shift_info():
 	shiftInfoList = []
 
 	# Prompt for shif date, appened date to list, add in time label to list.
-	print "\nEnter date <dd/mm/yy>: "
-	currentDate = raw_input()
+	print ("\nEnter date <dd/mm/yy>: ")
+	currentDate = input()
 	shiftInfoList.append(currentDate)
 	shiftInfoList.append("IN TIME:")
 	
 	# Prompt user for in time, appened in time to list, add out time label.
-	print "Enter in time - <HH:MM am/pm>: "
+	print ("Enter in time - <HH:MM am/pm>: ")
 	
-	inTimeRawInput = raw_input()
+	inTimeRawInput = input()
 	shiftInfoList.append(inTimeRawInput)
 	shiftInfoList.append("OUT TIME:")
 
@@ -73,8 +73,8 @@ def get_shift_info():
 
 
 	# Prompt user for out time, append out time to list.	
-	print "Enter out time - <HH:MM am/pm>: "
-	outTimeRawInput = raw_input()
+	print ("Enter out time - <HH:MM am/pm>: ")
+	outTimeRawInput = input()
 	shiftInfoList.append(outTimeRawInput)
 
 	outTime = standard_time_to_military_time(outTimeRawInput) 

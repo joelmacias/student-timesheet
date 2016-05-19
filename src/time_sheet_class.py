@@ -71,8 +71,8 @@ class TimeSheet:
 	
 		newGrandTotal = hoursWorkedString + ':' + minWorkedString + ':00'
 	
-		#grandTotal = datetime.time(self.totalHoursWorked, self.totalMinWorked, 00)
- 		(self.ws).cell('F24').value = newGrandTotal
+	
+		(self.ws).cell('F24').value = newGrandTotal
 
 
 		
