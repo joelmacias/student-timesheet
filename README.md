@@ -13,11 +13,11 @@ To run the tool:
 	python student-timesheet.py <new|open> <filename>
 	
 First argument: < new | open >  
-'new' will create a new timesheet, and format it according to the department timesheet.
+'new' will create a new timesheet, and format it according to the department timesheet.<br />
 'open' will open an existing timesheet.
 
 Second argument: < filename > 
-A new timesheet will be created with the provided name if the first argument was new.
+A new timesheet will be created with the provided name if the first argument was new.</br />
 An existing timesheet will be opened if the first argument was open 
 
 ##Example timesheet 
