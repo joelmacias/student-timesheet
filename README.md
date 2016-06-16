@@ -10,7 +10,7 @@ I wrote this tool specifically for the timesheet provided by my department, so i
 
 To run the tool:
 
-	python student-timesheet.py <new|open> <filename>
+	python student-timesheet.py <new|open> <filename.extension>
 
 Arguments:
 	
@@ -18,7 +18,7 @@ Arguments:
 'new' will create a new timesheet, and format it according to the department timesheet.<br />
 'open' will open an existing timesheet.
 
-	Second argument: <filename> 
+	Second argument: <filename.extension> 
 A new timesheet will be created with the provided name if the first argument was new.</br />
 An existing timesheet will be opened if the first argument was open 
 
