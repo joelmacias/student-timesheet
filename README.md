@@ -2,6 +2,10 @@
 Command line tool (CLT) to generate my student worker timsheet. The main goal of this CLT was to start learning Python, and to deter me from filling out all my paper timsheets the morning they are due. My intention is to fire up the tool at the start, and end of my shift, logging times accordingly.
 
 I'm certainly aware that I could have simply created this timesheet using Excel, but that would have been no fun.
+#Requirements
+Markup: * Python 3.5
+		* [Openpyxl](https://openpyxl.readthedocs.io/en/default/)
+
 #Usage
 The CLT will allow you to open an existing timesheet, or to create a new timesheet. 
 The format of the timesheet created will be the standard timesheet provided by my department. The tool will prompt for worker information, then proceed to prompt for shift entries.  
