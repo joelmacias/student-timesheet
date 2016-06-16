@@ -9,8 +9,9 @@ import sys
 def open_existing_workbook(fileName):
 	""" Returns a workbook from the filename specified by the user """
 	raw = fileName;
-	fileExtension = ".xlsx"
-	fileName += fileExtension
+
+#	fileExtension = ".xlsx"
+#   fileName += fileExtension
 
 	# current path
 	pwdPath = os.getcwd()
