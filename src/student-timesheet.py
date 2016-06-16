@@ -82,7 +82,7 @@ def main(userWorkbookSelection, fileName):
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
-	parser.add_argument("timesheet", choices=['open', 'new'], help = "o = open existing timesheet\nn = create new timesheet")
+	parser.add_argument("timesheet", choices=['open', 'new'], help = "open = open existing timesheet\nnew = create new timesheet")
 	parser.add_argument("filename", help = "Name of file to open, or name of file to create")
 	args = parser.parse_args()
 	main(args.timesheet, args.filename) 
