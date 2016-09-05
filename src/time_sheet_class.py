@@ -40,10 +40,11 @@ class TimeSheet:
 			
 	def save_time_sheet(self):
 		""" Saves the time sheet with the file name provided by the user """
-		fileExtension = ".xlsx"
+		"""fileExtension = ".xlsx"
 		fileToSave = self.fileName
 		fileToSave += fileExtension 
-		self.wb.save(fileToSave)
+		self.wb.save(fileToSave)"""
+		self.wb.save(self.fileName) 
 	
 	def calculate_grand_total(self):
 		""" Adds all the hours worked to determine total time worked for the time sheet, and populates cell with the grand total """

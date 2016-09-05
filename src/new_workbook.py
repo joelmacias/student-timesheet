@@ -90,8 +90,8 @@ def create_new_workbook(fileName):
 	ws.print_options.verticalCentered = True
 
 	# Save workbook.
-	fileExtension = ".xlsx"
-	fileName += fileExtension	
+	"""fileExtension = ".xlsx"
+	fileName += fileExtension"""	
 	wb.save(fileName)
 	
 	print ("\n\nTimesheet '{0}' was created".format(fileName))

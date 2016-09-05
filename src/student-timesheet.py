@@ -13,11 +13,13 @@ def main(userWorkbookSelection, fileName):
 		
 		# New timesheet will be created.	
 		if userWorkbookSelection == "new":
-			
+			fileName += ".xlsx"
+			print ("{0} before edit".format(fileName))	
 			# CurrentTimeSheet is an instance of class TimeSheet. 
 			# Create_new_workbook will format the timesheet to mimic the standard student worker timesheet.
 			currentTimeSheet = TimeSheet(fileName, new_workbook.create_new_workbook(fileName))
-		
+			print ("{0} after edit".format(fileName)) 			
+	
 		# Existing timesheet will be opened.
 		if userWorkbookSelection == "open": 
 			currentTimeSheet = TimeSheet(fileName,open_workbook.open_existing_workbook(fileName))
