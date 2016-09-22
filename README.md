@@ -4,7 +4,7 @@ Command line tool (CLT) to generate my student worker timsheet. The main goal of
 I'm certainly aware that I could have simply created this timesheet using Excel, but that would have been no fun.
 #Requirements
  * Python 3.5
- * [Openpyxl 2.3.5](https://openpyxl.readthedocs.io/en/default/://openpyxl.readthedocs.io/en/default/changes.html#id27)
+ * [Openpyxl 2.3.5](http://openpyxl.readthedocs.io/en/default/api/openpyxl.workbook.html)
 
 #Usage
 The CLT will allow you to open an existing timesheet, or to create a new timesheet. 
