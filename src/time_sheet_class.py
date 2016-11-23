@@ -52,7 +52,7 @@ class TimeSheet:
 		FMT = '%H:%M:%S'	
 		y = datetime.datetime.strptime(grandTotal,FMT).time()
 
-		for x in (((self.ws).columns)[5])[5:22]:
+		for x in (((self.ws).columns)[5])[5:23]:
 			if x.value != None:
 				self.totalHoursWorked += (datetime.datetime.strptime(x.value,FMT).time()).hour
 				self.totalMinWorked +=  (datetime.datetime.strptime(x.value,FMT).time()).minute
